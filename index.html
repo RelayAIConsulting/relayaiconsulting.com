@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relay AI Consulting — AI Production Systems for Digital Marketing Agencies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0F1F3D;
+    --ink-mid: #2A3A5C;
+    --ink-light: #888680;
+    --page: #F7F6F2;
+    --white: #FFFFFF;
+    --purple: #1A6FD4;
+    --purple-dark: #0F1F3D;
+    --purple-mid: #4DA3FF;
+    --purple-lt: #E8F0FF;
+    --teal: #1D9E75;
+    --teal-lt: #E1F5EE;
+    --border: rgba(14,13,12,0.10);
+    --border-strong: rgba(14,13,12,0.18);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-pill: 100px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TYPOGRAPHY ────────────────────────── */
+  .display {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1A6FD4;
+  }
+
+  /* ── LAYOUT ────────────────────────────── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 100px 0; }
+
+  /* ── NAV ───────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: #0F1F3D;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4DA3FF;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: #FFFFFF; }
+
+  .nav-cta {
+    background: #1A6FD4;
+    color: #FFFFFF !important;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    font-size: 14px !important;
+    transition: background 0.15s !important;
+  }
+
+  .nav-cta:hover { background: #4DA3FF !important; color: #0F1F3D !important; }
+
+  /* ── HERO ──────────────────────────────── */
+  #hero {
+    padding: 160px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--purple-lt);
+    border-radius: var(--radius-pill);
+    padding: 5px 14px;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--purple-dark);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 5.5vw, 64px);
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--purple);
+  }
+
+  .hero-body {
+    font-size: 18px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .btn-primary:hover { background: var(--purple); color: var(--white); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-mid);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .btn-secondary:hover { color: var(--ink); }
+  .btn-secondary svg { transition: transform 0.15s; }
+  .btn-secondary:hover svg { transform: translateX(3px); }
+
+  /* ── HERO VISUAL ───────────────────────── */
+  .hero-visual {
+    position: relative;
+  }
+
+  .dashboard-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 32px rgba(14,13,12,0.08);
+  }
+
+  .dash-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .dash-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .dash-badge {
+    background: var(--teal-lt);
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+  }
+
+  .output-item {
+    background: var(--page);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .output-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+
+  .output-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .output-sub {
+    font-size: 11px;
+    color: var(--ink-light);
+  }
+
+  .output-check {
+    margin-left: auto;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .dash-footer {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dash-stat-label { font-size: 11px; color: var(--ink-light); margin-bottom: 2px; }
+  .dash-stat-val { font-size: 18px; font-weight: 700; color: var(--ink); font-family: 'Syne', sans-serif; }
+
+  .float-badge {
+    position: absolute;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    box-shadow: 0 4px 20px rgba(14,13,12,0.10);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .float-badge-left {
+    bottom: -20px;
+    left: -24px;
+  }
+
+  .float-badge-right {
+    top: -20px;
+    right: -20px;
+  }
+
+  .float-badge-text { font-size: 12px; font-weight: 600; color: var(--ink); }
+  .float-badge-sub { font-size: 11px; color: var(--ink-light); }
+
+  /* ── LOGOS ─────────────────────────────── */
+  #logos {
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logos-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .logos-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .logo-item {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--border-strong);
+    letter-spacing: -0.02em;
+    opacity: 0.6;
+  }
+
+  /* ── PROBLEM ───────────────────────────── */
+  #problem { background: var(--ink); }
+
+  #problem .eyebrow { color: #4DA3FF; }
+
+  .problem-title {
+    font-size: clamp(36px, 4.5vw, 54px);
+    color: var(--white);
+    margin: 16px 0 24px;
+    max-width: 700px;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .problem-item {
+    background: rgba(14,13,12,0.6);
+    padding: 32px 28px;
+  }
+
+  .problem-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #4DA3FF;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .problem-item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .problem-item-body {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── HOW IT WORKS ──────────────────────── */
+  #how {
+    position: relative;
+  }
+
+  .how-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 72px;
+  }
+
+  .how-title {
+    font-size: clamp(34px, 4vw, 48px);
+    margin: 16px 0 20px;
+  }
+
+  .how-body {
+    font-size: 17px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .step {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .step:hover {
+    box-shadow: 0 8px 32px rgba(83,74,183,0.12);
+    transform: translateY(-3px);
+  }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--purple);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .step-icon {
+    width: 48px; height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--purple-lt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .step-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .step-body {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* ── WHAT YOU GET ──────────────────────── */
+  #services { background: var(--purple-lt); }
+
+  .services-header {
+    max-width: 560px;
+    margin-bottom: 64px;
+  }
+
+  .services-title {
+    font-size: clamp(34px, 4vw, 48px);
+    margin: 16px 0 20px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+
+  .service-card:hover {
+    box-shadow: 0 4px 24px rgba(83,74,183,0.12);
+  }
+
+  .service-icon {
+    width: 40px; height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .service-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .service-body {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  /* ── RESULTS ───────────────────────────── */
+  #results {
+    background: var(--white);
+  }
+
+  .results-header {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 64px;
+  }
+
+  .results-title { font-size: clamp(34px, 4vw, 48px); margin: 16px 0 20px; }
+
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 64px;
+  }
+
+  .metric-box {
+    background: var(--white);
+    padding: 36px 28px;
+    text-align: center;
+  }
+
+  .metric-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .metric-val span { color: var(--purple); }
+
+  .metric-label {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.4;
+  }
+
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .testimonial {
+    background: var(--page);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .stars {
+    color: var(--purple);
+    font-size: 14px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .author-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .author-title {
+    font-size: 12px;
+    color: var(--ink-light);
+  }
+
+  /* ── PRICING ───────────────────────────── */
+  #pricing {
+    background: var(--page);
+  }
+
+  .pricing-header {
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto 64px;
+  }
+
+  .pricing-title { font-size: clamp(34px, 4vw, 48px); margin: 16px 0 20px; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+  }
+
+  .pricing-card.featured {
+    background: var(--ink);
+    border-color: var(--ink);
+    position: relative;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--purple);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .pricing-card.featured .plan-name { color: rgba(255,255,255,0.55); }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-card.featured .plan-price { color: var(--white); }
+
+  .plan-period {
+    font-size: 13px;
+    color: var(--ink-light);
+    margin-bottom: 24px;
+  }
+
+  .pricing-card.featured .plan-period { color: rgba(255,255,255,0.45); }
+
+  .plan-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+
+  .pricing-card.featured .plan-divider { border-color: rgba(255,255,255,0.12); }
+
+  .plan-features { list-style: none; margin-bottom: 32px; }
+
+  .plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--ink-mid);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .pricing-card.featured .plan-features li { color: rgba(255,255,255,0.75); }
+
+  .check-icon-sm {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--teal-lt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pricing-card.featured .check-icon-sm {
+    background: rgba(29,158,117,0.25);
+  }
+
+  .btn-plan {
+    display: block;
+    text-align: center;
+    padding: 13px 20px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+
+  .btn-plan-outline {
+    border: 1.5px solid var(--border-strong);
+    color: var(--ink);
+  }
+
+  .btn-plan-outline:hover { background: var(--ink); color: var(--white); }
+
+  .btn-plan-white {
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  .btn-plan-white:hover { background: var(--purple); color: var(--white); }
+
+  /* ── FAQ ───────────────────────────────── */
+  #faq { background: var(--white); }
+
+  .faq-header {
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto 56px;
+  }
+
+  .faq-title { font-size: clamp(34px, 4vw, 44px); margin: 16px 0 0; }
+
+  .faq-list { max-width: 680px; margin: 0 auto; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    cursor: pointer;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    user-select: none;
+  }
+
+  .faq-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    color: var(--ink-mid);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-icon {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding-top: 14px;
+  }
+
+  /* ── CTA ───────────────────────────────── */
+  #cta {
+    background: var(--ink);
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+  }
+
+  .cta-title {
+    font-size: clamp(38px, 5vw, 60px);
+    color: var(--white);
+    max-width: 700px;
+    margin: 0 auto 24px;
+    position: relative;
+  }
+
+  .cta-body {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--purple);
+    padding: 14px 32px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-white:hover { background: #E8F0FF; }
+
+  .btn-ghost {
+    color: rgba(255,255,255,0.75);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+  }
+
+  .btn-ghost:hover { color: var(--white); }
+
+  /* ── FOOTER ────────────────────────────── */
+  footer {
+    background: var(--ink);
+    padding: 48px 0 32px;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+  }
+
+  /* ── RESPONSIVE ────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .float-badge { display: none; }
+    .problem-grid { grid-template-columns: 1fr; gap: 2px; }
+    .steps { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .testimonials { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    section { padding: 64px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow-dot { animation: none; }
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-dot"></div>
+      Relay AI Consulting
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#cta" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          <span>Now accepting new clients</span>
+        </div>
+        <h1 class="display hero-title">
+          Your agency's <em>output problem</em>, solved.
+        </h1>
+        <p class="hero-body">
+          Relay AI Consulting builds custom AI production systems for digital marketing agencies — so you have the capacity to grow — without the overhead of hiring, or the burnout of doing everything yourself.
+        </p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn-primary">
+            Get in touch
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#how" class="btn-secondary">
+            See how it works
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+
+
+        <div class="dashboard-card">
+          <div style="padding:8px 0 20px;">
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--purple-lt);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L13.5 8.5H20.5L14.5 12.5L16.5 19L11 15L5.5 19L7.5 12.5L1.5 8.5H8.5L11 2Z" stroke="#1A6FD4" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--ink);line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px;">Your agency's voice.<br>Your clients' trust.<br>Our systems do the work.</p>
+            <p style="font-size:14px;color:var(--ink-mid);line-height:1.7;margin-bottom:24px;">Every AI system we build is tailored to your agency — trained on your tone, your clients, and the way your team communicates. The output feels like you, because it was built around you.</p>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:20px;height:20px;border-radius:50%;background:#E8F0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 3L9 1" stroke="#1A6FD4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-size:13px;color:var(--ink);">Custom-built for your clients and workflow</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:20px;height:20px;border-radius:50%;background:#E8F0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 3L9 1" stroke="#1A6FD4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-size:13px;color:var(--ink);">Reviewed and refined until you're confident</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:20px;height:20px;border-radius:50%;background:#E8F0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 3L9 1" stroke="#1A6FD4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-size:13px;color:var(--ink);">Maintained and updated as your needs evolve</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section id="logos">
+  <div class="container">
+    <p class="logos-label">Trusted by agencies across the US</p>
+    <div class="logos-row">
+      <div class="logo-item">Neon Ambition</div>
+      <div class="logo-item">20North</div>
+      <div class="logo-item">JBowman Creative</div>
+      <div class="logo-item">Motiliti</div>
+      <div class="logo-item">Peaks Digital</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <p class="eyebrow">The bottleneck</p>
+    <h2 class="display problem-title">Your team is talented. Your tools are the problem.</h2>
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="problem-num">30+</div>
+        <div class="problem-item-title">Hours absorbed per week</div>
+        <div class="problem-item-body">Spent on ad copy, reports, and content briefs that AI systems can handle in a fraction of the time.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">$6K</div>
+        <div class="problem-item-title">Average junior hire cost</div>
+        <div class="problem-item-body">Per month in salary alone — before benefits, onboarding, and the months it takes for a new hire to find their stride.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">1 in 3</div>
+        <div class="problem-item-title">Clients you had to turn down</div>
+        <div class="problem-item-body">Because your team didn't have the bandwidth. Capacity constraints are one of the most common reasons agencies stay smaller than they want to be.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="how-header">
+      <p class="eyebrow">How it works</p>
+      <h2 class="display how-title">Built around your agency, from day one</h2>
+      <p class="how-body">No generic AI tools. A custom system tuned to your clients, your voice, and your workflow.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01 — Discovery</span>
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#1A6FD4" stroke-width="1.6"/><path d="M11 7v4l3 3" stroke="#1A6FD4" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="step-title">We learn your clients inside out</h3>
+        <p class="step-body">A deep-dive call covering your top accounts, existing content, brand voice, and biggest production pain points. This is where we decide exactly what to automate first.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">02 — Build</span>
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#1A6FD4" stroke-width="1.6"/><path d="M7 11h8M7 7.5h8M7 14.5h5" stroke="#1A6FD4" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="step-title">Custom prompts, voice guides, and workflows</h3>
+        <p class="step-body">We build a bespoke prompt library, brand voice guide for each client account, and a delivery workflow so output is consistent, on-brand, and ready to send.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">03 — Run</span>
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11l5 5 7-9" stroke="#1A6FD4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="step-title">Weekly content delivered, every week</h3>
+        <p class="step-body">From week two, your AI production system is live and running. We manage delivery, QA every output, and refine prompts monthly. You review, adjust as needed, and send.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <p class="eyebrow">What's included</p>
+      <h2 class="display services-title">Everything that eats your team's time</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon" style="background:#E8F0FF;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h10M3 14h7" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="service-title">Ad copy & content production</div>
+          <div class="service-body">Facebook, Google, LinkedIn ads, email sequences, blog outlines, landing page copy — generated in your clients' exact voice.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background:#E8F0FF;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 15l4-4 3 3 7-9" stroke="#1A6FD4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="service-title">Monthly performance reports</div>
+          <div class="service-body">Structured, branded narrative reports generated from raw data in under 10 minutes. Clients read them. You didn't write them.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background:#FAEEDA;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="#BA7517" stroke-width="1.5"/><path d="M14.5 14.5l2.5 2.5" stroke="#BA7517" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="service-title">SEO briefs & keyword research</div>
+          <div class="service-body">Keyword-clustered content briefs, competitor gap analysis, and topic calendars — produced in 30 minutes instead of half a day.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background:#FAECE7;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 4h12v12H4z" stroke="#993C1D" stroke-width="1.5" rx="2"/><path d="M4 9h12M9 4v12" stroke="#993C1D" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="service-title">Client onboarding & proposals</div>
+          <div class="service-body">Onboarding questionnaires, strategy decks, and proposal drafts personalized per prospect — in minutes, not hours.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background:#E6F1FB;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="10" rx="2" stroke="#185FA5" stroke-width="1.5"/><path d="M6 9h8M6 12h5" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="service-title">A/B copy variants for paid ads</div>
+          <div class="service-body">More copy variants in less time means more to test — giving your team better options to work with across paid campaigns.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background:#EAF3DE;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#3B6D11" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="service-title">Prompt library & system maintenance</div>
+          <div class="service-body">Monthly refinement of every AI workflow as your clients evolve, platforms change, and new tools emerge. Always adapting.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="container">
+    <div class="results-header">
+      <p class="eyebrow">What's possible</p>
+      <h2 class="display results-title">The kind of impact agencies aim for</h2>
+      <p style="font-size:16px;color:var(--ink-mid);margin-top:16px;line-height:1.7;max-width:520px;margin-left:auto;margin-right:auto;">Results vary by agency size, services, and starting point. These reflect what becomes possible when AI production systems are built and running well.</p>
+    </div>
+
+    <div class="metrics-row">
+      <div class="metric-box">
+        <div class="metric-val">30<span>+</span></div>
+        <div class="metric-label">Hours per week agencies can aim to reclaim from production work</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">3<span>×</span></div>
+        <div class="metric-label">Potential increase in client capacity without adding headcount</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val"><span>$</span>6K</div>
+        <div class="metric-label">Typical monthly salary cost that an AI system can help offset</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">90<span>%+</span></div>
+        <div class="metric-label">First-pass content approval rate agencies typically reach by month two</div>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Within a few weeks our team was spending far less time on content production. It's changed how we think about taking on new work — we finally feel like there's room to grow."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:#E8F0FF;color:#1A6FD4;">JB</div>
+          <div>
+            <div class="author-name">Jonathan B.</div>
+            <div class="author-title">Founder, JBowman Creative · Nashville</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The time I used to spend on reports and copy now goes toward strategy and new business. Having a system that handles the production side has been a genuine shift for how I run things."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:#E8F0FF;color:#1A6FD4;">DS</div>
+          <div>
+            <div class="author-name">Drew S.</div>
+            <div class="author-title">CEO, Digital Drew SEM · New York</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"We came in looking for help with bandwidth and found something that changed how our whole production workflow runs. For a team our size, having that kind of support in place makes a real difference."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:#E8F0FF;color:#0F1F3D;">SM</div>
+          <div>
+            <div class="author-name">Scott M.</div>
+            <div class="author-title">CEO, Motiliti · Austin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <p class="eyebrow">Questions</p>
+      <h2 class="display faq-title">Common questions</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          Will the content sound like it was written by AI?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">No. The first week of every engagement is spent building a bespoke brand voice guide and prompt library trained on your clients' existing content. The output matches their best copywriter — because we've built the system around their actual language, tone, and style. Most clients can't tell the difference.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          We already use ChatGPT. How is this different?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">Tools are one thing. A system is another. You're not getting access to AI tools — you're getting a fully built, maintained, and managed AI production department. Custom prompt libraries, brand voice guides, weekly delivery workflows, QA, and ongoing refinement. Anyone can use a hammer. We build the house.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          How long before we see results?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">Your first content batch is delivered in week two. Most agencies report meaningful time savings from week three onward, once the system is calibrated and the revision cycle settles. By month two, the system is running at full capacity and your team is noticeably lighter on production overhead.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          What if the content needs revisions?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">Each deliverable includes two revision rounds. We treat month one as a calibration period — expect one or two cycles as we dial in the voice guides. After that, first-pass approval rates typically exceed 90%. Revisions are handled within 24 hours on the Starter plan, same day on Full-service.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          What's the minimum commitment?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">Six months, billed monthly. We ask for six months because the first month is setup and calibration, and the real ROI compounds from month two onward. Termination requires 30 days' written notice after the initial term. Payment is due upfront each month before work begins.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-ring" style="width:600px;height:600px;top:-200px;left:-200px;"></div>
+  <div class="cta-ring" style="width:400px;height:400px;bottom:-150px;right:-100px;"></div>
+  <div class="container">
+    <h2 class="display cta-title">Ready to remove your agency's production bottleneck?</h2>
+    <p class="cta-body">Send us a quick email and we'll set up a conversation to explore where your agency is losing time and what a custom AI system could look like for you — no obligation.</p>
+    <div class="cta-actions">
+      <a href="mailto:sarah@relayaiconsulting.com?subject=Project%20Inquiry%20-%20Relay%20AI%20Consulting&body=Hi%20Sarah%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20Relay%20AI%20Consulting%20and%20how%20you%20can%20help%20my%20agency.%0A%0AName%3A%20%0AAgency%3A%20%0AWebsite%3A%20%0A%0ALooking%20forward%20to%20connecting." class="btn-white">
+        Get in touch
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="mailto:sarah@relayaiconsulting.com?subject=Project%20Inquiry%20-%20Relay%20AI%20Consulting&body=Hi%20Sarah%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20Relay%20AI%20Consulting%20and%20how%20you%20can%20help%20my%20agency.%0A%0AName%3A%20%0AAgency%3A%20%0AWebsite%3A%20%0A%0ALooking%20forward%20to%20connecting." class="btn-ghost">
+        Email sarah@relayaiconsulting.com
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12v8H2zM2 4l6 5 6-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">
+        <div class="logo-dot"></div>
+        Relay AI Consulting
+      </a>
+      <ul class="footer-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#cta">Get in touch</a></li>
+        <li><a href="mailto:sarah@relayaiconsulting.com?subject=Project%20Inquiry%20-%20Relay%20AI%20Consulting&body=Hi%20Sarah%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20Relay%20AI%20Consulting%20and%20how%20you%20can%20help%20my%20agency.%0A%0AName%3A%20%0AAgency%3A%20%0AWebsite%3A%20%0A%0ALooking%20forward%20to%20connecting.">sarah@relayaiconsulting.com</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">© 2025 Relay AI Consulting. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
