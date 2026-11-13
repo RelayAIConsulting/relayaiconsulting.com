@@ -29,7 +29,7 @@
     --radius-pill: 100px;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     font-family: 'Inter', sans-serif;
@@ -574,7 +574,7 @@
     background: var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 
   .metric-box {
@@ -991,6 +991,9 @@
     .steps { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
     .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .metric-box { padding: 28px 16px; min-width: 0; }
+    .metric-val { font-size: 30px; }
+    .footer-links { flex-wrap: wrap; gap: 16px; }
     .testimonials { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
