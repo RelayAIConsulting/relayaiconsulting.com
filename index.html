@@ -404,7 +404,7 @@
 
   .problem-num {
     font-family: 'Syne', sans-serif;
-    font-size: 48px;
+    font-size: clamp(24px, 3vw, 44px);
     font-weight: 800;
     color: #4DA3FF;
     line-height: 1;
@@ -798,7 +798,7 @@
   .btn-plan-white:hover { background: var(--purple); color: var(--white); }
 
   /* ── FAQ ───────────────────────────────── */
-  #faq { background: var(--white); }
+  #faq { background: var(--white); padding-top: 0; }
 
   .faq-header {
     text-align: center;
@@ -998,6 +998,8 @@
     .metrics-row { grid-template-columns: repeat(2, 1fr); }
     .metric-box { padding: 28px 16px; min-width: 0; }
     .metric-val { font-size: 20px; }
+    .problem-num { font-size: 30px; }
+    #faq { padding-top: 0; }
     .footer-links { flex-wrap: wrap; gap: 16px; }
     .testimonials { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
